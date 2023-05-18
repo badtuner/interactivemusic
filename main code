@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Music Website</title>
+  <style>
+    /* CSS styles for the images */
+    .interactive-image {
+      cursor: pointer;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Image 1 -->
+  <img class="interactive-image" src="path/to/image1.jpg" data-audio="path/to/audio1.mp3">
+  
+  <!-- Image 2 -->
+  <img class="interactive-image" src="path/to/image2.jpg" data-audio="path/to/audio2.mp3">
+  
+  <!-- Audio element -->
+  <audio id="audio-player" controls>
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Get all the interactive image elements
+    const interactiveImages = document.querySelectorAll('.interactive-image');
+
+    // Attach click listeners to the interactive images
+    interactiveImages.forEach(function(image) {
+      image.addEventListener('click', function() {
+        // Get the audio source associated with the clicked image
+        const audioSource = image.getAttribute('data-audio');
+        
+        // Play the audio
+        playMusic(audioSource);
+      });
+    });
+
+    // Function to play the audio
+    function playMusic(audioPath) {
+      const audioPlayer = document.getElementById('audio-player');
+      audioPlayer.src = audioPath;
+      audioPlayer.play();
+    }
+  </script>
+</body>
+</html>
